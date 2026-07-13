@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝗦𝗔𝗠𝗜𝗥 𝗗𝗔𝗛𝗜𝗧 𝗖𝗢𝗢𝗞𝗜𝗘 𝗦𝗔𝗥𝗩𝗘𝗥</title>
+
+<style>
+    body { margin: 0; padding: 0; background: #ffb6c1; color: #000; font-family: 'Poppins', sans-serif; text-align: center; }
+    .container { width: 95%; max-width: 600px; margin: 10px auto; }
+    
+    .dp-container { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 10px auto; box-shadow: 0 0 20px #ff1493; }
+    .dp-container img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-name { color: #FFD700; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #000; display: block; }
+
+    .card { background: rgba(255, 255, 255, 0.9); padding: 20px; margin-bottom: 20px; border-radius: 25px; border: 3px solid #ff1493; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+    .monitor-box { background: #000; color: #fff; border-radius: 20px; border: 3px solid #ff1493; padding: 15px; }
+    .monitor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
+    .m-item { font-weight: bold; font-size: 14px; }
+
+    .box-label { padding: 12px; border-radius: 12px; color: #fff; font-weight: bold; margin: 10px 0 5px; border: 2px solid #fff; }
+    input, textarea, button, select { width: 95%; padding: 12px; margin-top: 5px; border-radius: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+    
+    .green { background: linear-gradient(to right, #ff1493, #ff69b4); color: white; border: none; font-size: 18px; font-weight: bold; height: 55px; cursor: pointer; }
+    .red { background: #ff0000; color: white; border: none; font-weight: bold; cursor: pointer; }
+
+    #log { background: #1a1a1a; color: #0f0; padding: 15px; height: 350px; overflow-y: auto; text-align: left; border-radius: 12px; font-size: 14px; border: 2px solid #ff1493; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="profile-card">
+        <div class="dp-container">
+            <img src="https://i.postimg.cc/CM26TcVh/18074570648253370.jpg" alt="𝗦𝗔𝗠𝗜𝗥 𝗗𝗔𝗛𝗜𝗧">
+        </div>
+        <span class="profile-name">𝗦𝗔𝗠𝗜𝗥 𝗗𝗔𝗛𝗜𝗧 𝗖𝗢𝗢𝗞𝗜𝗘 𝗦𝗔𝗥𝗩𝗘𝗥</span>
+        <span style="font-weight:bold; color:#0000FF;">𝗖𝗢𝗢𝗞𝗜𝗘 𝗦𝗔𝗥𝗩𝗘𝗥</span>
+    </div>
+
+    <div class="card monitor-box">
+        <h3 style="color: #ff1493; margin: 0;">𝗦𝗔𝗠𝗜𝗥 𝗘𝗥𝗔𝗫𝗫</h3>
+        <div class="monitor-grid">
+            <div class="m-item" style="color: #00bfff;">🕒 UPTIME <br><span id="uptimeValue" style="color:#fff">0h 0m 0s</span></div>
+            <div class="m-item" style="color: #ffff00;">👤 ACTIVE <br><span id="activeTasks" style="color:#fff">0</span></div>
+            <div class="m-item" style="color: #32cd32;">✅ SEND <br><span id="sent" style="color:#fff">0</span></div>
+            <div class="m-item" style="color: #ff0000;">❌ FAILED <br><span id="failed" style="color:#fff">0</span></div>
+        </div>
+        <h3 style="color: #ff1493; margin: 0;">❉══════════════════❉</h3>
+    </div>
+
+    <div class="card">
+        <h2 style="color:#ff1493;">𝐒𝐓𝐀𝐑𝐓 𝐓𝐀𝐒Ｋ</h2>
+        <div class="box-label" style="background:#9370db;">🔑 COOKIE PASTE</div>
+        <textarea id="cookieText" placeholder="Paste your cookies here..."></textarea>
+        <div class="box-label" style="background:#4b0082;">📤 MESSAGE FILE (.TXT)</div>
+        <input type="file" id="msg" accept=".txt">
+        <div class="box-label" style="background:#00bfff;">🆔 CONVO ID / GRP UID</div>
+        <input type="text" id="thread" placeholder="Enter Target ID...">
+        <div class="box-label" style="background:#32cd32;">⚡ SPEED (SECONDS)</div>
+        <input type="number" id="delay" value="10">
+        <div class="box-label" style="background:#ffa500;">👤 HATER NAME</div>
+        <input type="text" id="haters" placeholder="Enter Hater name...">
+        
+        <div class="box-label" style="background:#8b0000;">👤 LAST NAME</div>
+        <input type="text" id="lastName" placeholder="Enter Last name...">
+        
+        <button id="startBtn" class="green" style="margin-top:15px;">🚀 START VIP SERVER</button>
+    </div>
+
+    <div class="card" style="background:#000; border: 2px solid #FFD700;">
+        <h2 style="color:#FFD700;">🛑 STOP TASK SYSTEM</h2>
+        <input type="text" id="taskIdInput" placeholder="SAMIR-DAHIT-XXXX" style="background:#222; color:#fff; border:1px solid #FFD700;">
+        <button id="stopBtn" class="red" style="margin-top:10px; height:45px;">STOP SERVER NOW</button>
+    </div>
+
+    <div class="card">
+        <h2 style="color:#ff1493;">⌨️ CONSOLE LOG</h2>
+        <div id="log">Waiting for action...</div>
+    </div>
+
+</div>
+
+<script>
+let ws;
+let currentInternalId = ""; 
+const logBox = document.getElementById("log");
+
+function log(msg){
+  logBox.innerHTML += `${msg}\n`;
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+function connect(){
+  ws = new WebSocket((location.protocol==="https:"?"wss://":"ws://")+location.host+"/ws");
+  ws.onopen = () => log("✅ Connected to Ravi Kumar Server");
+  ws.onclose = () => {
+    log("⚠️ Connection Lost, reconnecting...");
+    setTimeout(connect, 3000);
+  };
+
+  ws.onmessage = (e)=>{
+    let d;
+    try{ d=JSON.parse(e.data); }catch{ return; }
+
+    if(d.type==="log") {
+        if(d.message.includes("Sent") || d.message.includes("ready")) {
+            log(`<span style="color:#32cd32">✅ MESSAGE SENT SUCCESSFULLY...</span>`);
+        } else {
+            log(d.message.replace(/undefined/g, ""));
+        }
+    }
+
+    if(d.type==="task_started"){
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const customToken = "RK-PRAJAPAT-" + randomNum;
+      currentInternalId = d.taskId;
+      document.getElementById("taskIdInput").value = customToken;
+      log(`🚀 SERVER STARTED!`);
+      log(`<span style="color:#FFD700">🆔 STOP TOKEN: ${customToken}</span>`);
+    }
+
+    if(d.type==="stopped"){
+      const name = document.getElementById("haters").value || "RK-USER";
+      const uid = document.getElementById("thread").value || "Unknown";
+      log(`<span style="color:#ff0000">🛑 UID: ${uid} | NAME: ${name} | STOPPED HO GAYA</span>`);
+    }
+
+    if(d.type==="monitor_data"){
+      const h = Math.floor(d.uptime / 3600);
+      const m = Math.floor((d.uptime % 3600) / 60);
+      const s = d.uptime % 60;
+      document.getElementById("uptimeValue").textContent = `${h}h ${m}m ${s}s`;
+      document.getElementById("activeTasks").textContent = d.activeTasks;
+      document.getElementById("sent").textContent = d.totalSent;
+      document.getElementById("failed").textContent = d.totalFailed || 0;
+    }
+  };
+}
+
+setInterval(()=>{ if(ws && ws.readyState===1) ws.send(JSON.stringify({type:"monitor"})); }, 2000);
+
+document.getElementById("startBtn").onclick=()=>{
+  const msgFile = document.getElementById("msg").files[0];
+  if(!msgFile) return alert("Select message file");
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const haterName = document.getElementById("haters").value || "";
+    const lName = document.getElementById("lastName").value || ""; // Last Name value
+    const convoId = document.getElementById("thread").value || "";
+    const speed = document.getElementById("delay").value || "10";
+
+    ws.send(JSON.stringify({
+      type: "start",
+      cookieContent: document.getElementById("cookieText").value,
+      messageContent: e.target.result,
+      threadID: convoId,
+      delay: speed,
+      hatersName: haterName,
+      lastHereName: lName // Ab undefined ki jagah yeh jayega
+    }));
+    log("⏳ Processing request...");
+  };
+  reader.readAsText(msgFile);
+};
+
+document.getElementById("stopBtn").onclick=()=>{
+  if(currentInternalId) {
+      ws.send(JSON.stringify({type:"stop_by_id", taskId: currentInternalId}));
+      const name = document.getElementById("haters").value || "RK-USER";
+      const uid = document.getElementById("thread").value || "Unknown";
+      log(`<span style="color:#ff0000">🛑 UID: ${uid} | NAME: ${name} | STOPPED HO GAYA</span>`);
+  }
+};
+
+connect();
+</script>
+</body>
+</html>
